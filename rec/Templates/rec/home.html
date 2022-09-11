@@ -1,5 +1,14 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <h4>Home</h4>
+    <h2>Home</h4>
+    <hr>
+    <div>
+    {% for doc in doctor %}
+        <a href="">{{doc.user.name}}</a>
+        <br>
+    {% endfor %}
+    </div>
+
+
 {% endblock content %}
