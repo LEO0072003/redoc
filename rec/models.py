@@ -8,10 +8,17 @@ class User(AbstractUser):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
+
+    def __str__(self):
+        return self.name
+
+
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='patient')
     dob = models.DateField(null=True, blank=True)
     contact = models.CharField(null=True, blank=True, max_length=100)
+
+
     def __str__(self):
         return self.user.name
 
@@ -27,8 +34,8 @@ class Appointments(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     app_time = models.DateTimeField()
-    diognoses = models.TextField(max_length=1000)
-    prescriptions = models.TextField(max_length=250)
+    diognoses = models.TextField(max_length=1000, null=True, blank=True)
+    prescriptions = models.TextField(max_length=250, null=True, blank=True)
 
 
     class Meta:

@@ -1,0 +1,9 @@
+{% if request.user.usertype == 'p' %}
+    <div>
+        <a href="{% url 'appointment' request.user.id %}"><h5>Check/Book Appointment</h5></a>
+    </div>
+{% else %}
+    <div>
+        <a href="{% url 'appointment' request.user.id %}">Check your Appointments</a>
+    </div>
+{% endif %}
