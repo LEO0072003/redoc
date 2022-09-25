@@ -2,7 +2,9 @@
 
 {% block content %}
     {% if page == 'patient' %}
-
+        {% for apps in appntmnt %}
+           <li>{{apps.doctor}}</li>
+        {% endfor %}
     {% elif page == 'doctor' %}
 
     {% endif %}

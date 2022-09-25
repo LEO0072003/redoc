@@ -42,5 +42,5 @@ class Appointments(models.Model):
         unique_together = ('doctor', 'patient', 'app_time')
 
     def __str__(self):
-        st = (str(self.doctor.user.name)+str(self.patient.user.name)).lower().strip()
+        st =str({'patient': self.patient, 'doctor': self.doctor, 'time': self.app_time})
         return st

@@ -147,9 +147,10 @@ def userProfile(request, pk):
 @login_required(login_url='login')
 def appointmentDetails(request, pk):
 
-    context = {}
-    print(request.user.usertype)
     if request.user.usertype == 'p':
-        appointments = Appointments.objects.filter(patient=request.user.id)
+        usr = Patient.objects.get(user = pk)
+        appointments = Appointments.objects.filter(patient = usr.id)
+    print(appointments)
+    context = {'appntmnt':appointments}
 
     return render(request, 'rec/appointment.html', context)
