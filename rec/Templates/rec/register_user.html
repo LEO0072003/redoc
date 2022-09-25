@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<!-- <div>
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Enter your username">
+        <br>
+
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter your password">
+        <br>
+
+        <label>Usertype</label>
+        <select name="usertype" >
+            <option value=""></option>
+            <option value="doctor">doctor</option>
+            <option value="patient">patient</option>
+        </select>
+
+        <br>
+        <input type="submit" value="Create">
+    </form> -->
+<div>
+
+    {% if form %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ucf.as_p}}
+        {{ucf.usertype.as_hidden}}
+        {{form.as_p}}
+        <input type="submit" value="Create">
+    </form>
+    {% else %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label>What Kind of User You want to create??</label>
+        <select name="usertype" >
+            <option value="">---</option>
+            <option value="doctor">doctor</option>
+            <option value="patient">patient</option>
+        </select>
+        <br>
+        <input type="submit" value="Proceed">
+    </form>
+
+    {% endif %}
+
+</div>
+
+{% endblock content %}

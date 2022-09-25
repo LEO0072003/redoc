@@ -1,7 +1,30 @@
-<h1><u>ReDoc</u></h1>
-{% if page=login %}
+
+{% if page %}
+    {% if page == 'patient' or page == 'doctor' %}
+        <h1>ReDoc</h1>
+
+    {% elif page == 'login' or page == 'general' %}
+        <a href="{% url 'home' %}"><h1>ReDoc</h1></a>
+
+    {% endif %}
+{% else %}
+    <a href="{% url 'home' %}"><h1>ReDoc</h1></a>
+{% endif %}
+
+
+{% if request.user.is_authenticated %}
+
+<h6>Welcome {{user.name}} </h6>
+    {% if page %}
+
+    {% else %}
+
+    <a href="{% url 'logout' %}">Logout</a>
+    {% endif %}
+
+{% else %}
+
 <a href="{% url 'login' %}">Login</a>
 {% endif %}
+
 <hr>
-
-

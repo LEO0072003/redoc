@@ -1,14 +1,19 @@
 {% extends 'main.html' %}
-
 {% block content %}
     <h2>Home</h4>
     <hr>
-    <div>
+    {% if request.user.is_authenticated %}
+        {% include 'rec/pd_home.html' %}
+    {% else %}
+    <small>Doctors around</small>
     {% for doc in doctor %}
-        <a href="">{{doc.user.name}}</a>
-        <br>
+        <div>
+            <br>
+            <a href="{% url 'profile' doc.user.id %}">{{doc.user.name}}</a>
+
+            <br>
+        </div>
     {% endfor %}
-    </div>
-
-
+    {% endif %}
 {% endblock content %}
+
